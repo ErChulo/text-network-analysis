@@ -4,9 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Text Network Analysis</title>
+    <!-- Add any CSS framework here if needed -->
     <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
     />
     <style>
       #graph-container {
@@ -15,66 +16,95 @@
         border: 1px solid #ccc;
         margin-top: 20px;
       }
+
       #legend {
-        margin-top: 20px;
+        margin-top: 10px;
+      }
+
+      .node-tooltip {
+        pointer-events: none;
+        position: absolute;
+        z-index: 10;
+        background: white;
+        border: 1px solid black;
+        padding: 10px;
+        border-radius: 5px;
       }
     </style>
-    <script type="module" crossorigin src="/assets/index-C5ZoE5PV.js"></script>
+    <script type="module" crossorigin src="/assets/index-DcYsYsbB.js"></script>
   </head>
-  <body>
-    <section class="section">
-      <div class="container">
-        <h1 class="title">Text Network Analysis Tool</h1>
+  <body class="bg-gray-100 p-6">
+    <div class="container mx-auto">
+      <h1 class="text-2xl font-bold text-center mb-4">Text Network Analysis</h1>
 
-        <div class="field">
-          <label class="label">Enter Text</label>
-          <div class="control">
-            <textarea
-              id="textInput"
-              class="textarea"
-              placeholder="Paste text here"
-            ></textarea>
-          </div>
-        </div>
-
-        <div class="field">
-          <label class="label">Stopwords (comma separated)</label>
-          <div class="control">
-            <input
-              id="stopwordsInput"
-              class="input"
-              type="text"
-              placeholder="e.g. the, and, to, of"
-              value="the,and,to,of,it,is,in,with,as,for,on"
-            />
-          </div>
-        </div>
-
-        <div class="field">
-          <label class="label">Centrality Type</label>
-          <div class="control">
-            <div class="select">
-              <select id="centralitySelect">
-                <option value="betweenness">Betweenness Centrality</option>
-                <option value="eigenvector">Eigenvector Centrality</option>
-              </select>
-            </div>
-          </div>
-        </div>
-
-        <div class="buttons">
-          <button id="analyzeBtn" class="button is-primary">
-            Analyze Text
-          </button>
-          <button id="exportBtn" class="button is-link">Export Graph</button>
-          <button id="resetBtn" class="button is-warning">Reset Graph</button>
-        </div>
-
-        <div id="graph-container"></div>
-
-        <div id="legend" class="content"></div>
+      <!-- Text input area -->
+      <div class="mb-4">
+        <label for="textInput" class="block text-lg font-medium"
+          >Enter Text</label
+        >
+        <textarea
+          id="textInput"
+          class="w-full border rounded p-2"
+          rows="6"
+        ></textarea>
       </div>
-    </section>
 
+      <!-- Stopwords input -->
+      <div class="mb-4">
+        <label for="stopwordsInput" class="block text-lg font-medium"
+          >Custom Stopwords (comma-separated)</label
+        >
+        <input
+          id="stopwordsInput"
+          type="text"
+          class="w-full border rounded p-2"
+          placeholder="Enter stopwords"
+        />
+      </div>
+
+      <!-- Centrality selection -->
+      <div class="mb-4">
+        <label for="centralitySelect" class="block text-lg font-medium"
+          >Choose Centrality Type</label
+        >
+        <select id="centralitySelect" class="w-full border rounded p-2">
+          <option value="betweenness">Betweenness Centrality</option>
+          <option value="eigenvector">Eigenvector Centrality</option>
+        </select>
+      </div>
+
+      <!-- Buttons -->
+      <div class="mb-4">
+        <button
+          id="analyzeBtn"
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        >
+          Analyze Text
+        </button>
+        <button
+          id="exportBtn"
+          class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded ml-2"
+        >
+          Export Graph Data
+        </button>
+        <button
+          id="resetBtn"
+          class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded ml-2"
+        >
+          Reset Graph
+        </button>
+      </div>
+
+      <!-- Graph container -->
+      <div class="flex">
+        <!-- Legend -->
+        <div id="legend" class="w-1/5 bg-white border p-4"></div>
+
+        <!-- Graph -->
+        <div id="graph-container" class="w-4/5"></div>
+      </div>
+    </div>
+
+    <!-- Main JS -->
   </body>
 </html>
