@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Text Network Analysis</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+    />
+    <style>
+      #graph-container {
+        width: 100%;
+        height: 600px;
+        border: 1px solid #ccc;
+        margin-top: 20px;
+      }
+      #legend {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="section">
+      <div class="container">
+        <h1 class="title">Text Network Analysis Tool</h1>
+
+        <div class="field">
+          <label class="label">Enter Text</label>
+          <div class="control">
+            <textarea
+              id="textInput"
+              class="textarea"
+              placeholder="Paste text here"
+            ></textarea>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Stopwords (comma separated)</label>
+          <div class="control">
+            <input
+              id="stopwordsInput"
+              class="input"
+              type="text"
+              placeholder="e.g. the, and, to, of"
+              value="the,and,to,of,it,is,in,with,as,for,on"
+            />
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Centrality Type</label>
+          <div class="control">
+            <div class="select">
+              <select id="centralitySelect">
+                <option value="betweenness">Betweenness Centrality</option>
+                <option value="eigenvector">Eigenvector Centrality</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="buttons">
+          <button id="analyzeBtn" class="button is-primary">
+            Analyze Text
+          </button>
+          <button id="exportBtn" class="button is-link">Export Graph</button>
+          <button id="resetBtn" class="button is-warning">Reset Graph</button>
+        </div>
+
+        <div id="graph-container"></div>
+
+        <div id="legend" class="content"></div>
+      </div>
+    </section>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
